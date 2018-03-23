@@ -4,7 +4,7 @@ import {environment} from '../../environments/environment'
 
 
 @Injectable()
-export class ProfileService {
+export class ProfileRequestService {
 profile:Profile;
   constructor() { }
 
