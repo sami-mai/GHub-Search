@@ -1,3 +1,13 @@
 export class UserProfile {
-  constructor(public login:string, public email:string){}
+  UserProfile:any[];
+  constructor(
+
+    public name:string,
+    public login:string,
+    public email:string,
+    public avatar_url:string,
+    public html_url:string,
+
+  )
+  {}
 }
