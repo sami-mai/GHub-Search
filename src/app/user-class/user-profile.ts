@@ -1,3 +1,3 @@
 export class UserProfile {
-  constructor(public name:string){}
+  constructor(public login:string, public email:string){}
 }
