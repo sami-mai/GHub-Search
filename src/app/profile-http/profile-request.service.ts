@@ -7,7 +7,7 @@ import {UserRepos} from '../user-class/user-repos';
 @Injectable()
 export class ProfileRequestService {
 private _apiKey:string = environment.gitHubapiKey;
-private login:string;
+public login:string;
 profile:UserProfile;
 repos:UserRepos;
 
@@ -19,6 +19,7 @@ this.repos=new UserRepos("","","");
 }
   updateProfile(username:string){
     this.login=username;
+
   }
 
   getProfileInfo(){

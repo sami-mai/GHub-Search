@@ -15,15 +15,16 @@ export class SearchFormComponent implements OnInit {
   profile:UserProfile;
   repos:UserRepos;
   username:string;
-  profileRequest:ProfileRequestService;
+
 
 
   findProfile() {
     this.profileRequest.updateProfile(this.username)
-    return (this.profile);
+    this.profileRequest.getProfileInfo()
+    console.log(this.profileRequest.profile)
   }
 
-  constructor() {}
+  constructor(private profileRequest:ProfileRequestService) {}
 
 
 
