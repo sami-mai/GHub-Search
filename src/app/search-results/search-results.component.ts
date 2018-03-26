@@ -19,14 +19,11 @@ export class SearchResultsComponent implements OnInit {
 
 
   constructor(private profileRequest:ProfileRequestService) {
-
-  }
-
-  findProfile(){
-    this.profileRequest.updateProfile(this.username)
     this.profile=this.profileRequest.profile
     this.repos=this.profileRequest.repos
   }
+
+  
 
   ngOnInit() {
     this.profileRequest.getProfileInfo()

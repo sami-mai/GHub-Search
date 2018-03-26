@@ -6,7 +6,7 @@ import {UserRepos} from '../user-class/user-repos';
 
 @Injectable()
 export class ProfileRequestService {
-private _apiKey:string = environment.gitHub_apiKey;
+private _apiKey:string = environment.gitHubapiKey;
 private login:string;
 profile:UserProfile;
 repos:UserRepos;
@@ -16,6 +16,9 @@ constructor(private http:HttpClient) {
 this.profile=new UserProfile("","","","","",)
 this.login = 'sami-mai';
 this.repos=new UserRepos("","","");
+}
+  updateProfile(username:string){
+    this.login=username;
   }
 
   getProfileInfo(){
@@ -42,7 +45,7 @@ this.repos=new UserRepos("","","");
       resolve()
       },
       error=>{
-      this.profile.name=''
+      this.profile.name='Samirah Maison'
       this.profile.login=''
       this.profile.email=''
       this.profile.avatar_url=''
@@ -81,14 +84,8 @@ getProfileRepo(){
  return promise
 }
 
-updateProfile(username:string){
-  this.login=username;
-}
+// findProfile() {
+//   this.profileRequest.updateProfile(this.username);
+// }
 
 }
-
-
-
-
-      // getProfileInfo(){
-       // this.http.get<ApiResponse>("https://api.github.com/users/" + this.username + "?access_token=" + "environment.apiKey")
