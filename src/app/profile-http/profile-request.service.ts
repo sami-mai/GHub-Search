@@ -6,7 +6,6 @@ import {UserRepos} from '../user-class/user-repos';
 
 @Injectable()
 export class ProfileRequestService {
-
 private _apiKey:string = environment.gitHub_apiKey;
 private login:string;
 profile:UserProfile;
