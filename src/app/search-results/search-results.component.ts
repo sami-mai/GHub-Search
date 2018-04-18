@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProfileRequestService } from '../profile-http/profile-request.service';
 import {UserProfile} from '../user-class/user-profile';
 import {UserRepos} from '../user-class/user-repos';
@@ -13,24 +13,18 @@ import {HttpClient} from '@angular/common/http'
 
 export class SearchResultsComponent implements OnInit {
 
-  profile:UserProfile;
-  repos:UserRepos;
-  username:string;
+  @Input('searchProfile') public profile;
+
+  @Input('searchRepos') public repos;
 
 
   constructor(private profileRequest:ProfileRequestService) {
-    this.profile=this.profileRequest.profile
-    this.repos=this.profileRequest.repos
+    // this.profile=this.profileRequest.profile
+    // this.repos=this.profileRequest.repos
+
   }
 
-  
-
   ngOnInit() {
-    this.profileRequest.getProfileInfo()
-    console.log(this.profile);
-
-    this.profileRequest.getProfileRepo()
-    console.log(this.repos);
 
   }
 }
