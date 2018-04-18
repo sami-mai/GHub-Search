@@ -12,21 +12,34 @@ import {HttpClient} from '@angular/common/http'
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
-  profile:UserProfile;
-  repos:UserRepos;
-  username:string;
 
 
+  public username:string;
+  public profile:UserProfile;
+  public repos:UserRepos;
 
-  findProfile() {
-    this.profileRequest.updateProfile(this.username)
-    this.profileRequest.getProfileInfo()
-    console.log(this.profileRequest.profile)
-  }
 
   constructor(private profileRequest:ProfileRequestService) {}
 
+  findProfile(username) {
+    this.profileRequest.updateProfile(this.username)
+    this.profileRequest.getProfileInfo()
+    this.profile = this.profileRequest.profile
+    // this.profileRequest.getProfileRepo()
+    // this.repos = this.profileRequest.repos
 
+
+  }
+
+  findRepos(username) {
+    this.profileRequest.updateProfile(this.username)
+    // this.profileRequest.getProfileInfo()
+    // this.profile = this.profileRequest.profile
+    this.profileRequest.getProfileRepo()
+    this.repos = this.profileRequest.repos
+
+
+  }
 
   ngOnInit() {
   }
