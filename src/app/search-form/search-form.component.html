@@ -1,7 +1,12 @@
 <form class="search-form">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search GitHub users by
-    username" [(ngModel)]="username" name="username" (keyup)="findProfile()">
+    <input type="text" class="form-control" placeholder="Search GitHub users by username" [(ngModel)]="username" name="username" (keyup)="findProfile(username)">
 
   </div>
 </form>
+
+<br>
+
+<div>
+  <app-search-results [searchProfile]="profile" [searchRepos]="repos"></app-search-results>
+</div>
