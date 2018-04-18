@@ -8,17 +8,22 @@ import {UserRepos} from '../user-class/user-repos';
 export class ProfileRequestService {
 private _apiKey:string = environment.gitHubapiKey;
 public login:string;
-profile:UserProfile;
-repos:UserRepos;
+public username:string;
+public profile:UserProfile;
+public repos:UserRepos;
+
 
 
 constructor(private http:HttpClient) {
-this.profile=new UserProfile("","","","","",)
+this.profile=new UserProfile("","","","","");
 this.login = 'sami-mai';
 this.repos=new UserRepos("","","");
+
 }
+
   updateProfile(username:string){
-    this.login=username;
+    this.login = username;
+
 
   }
 
@@ -61,22 +66,26 @@ this.repos=new UserRepos("","","");
 getProfileRepo(){
   interface ApiResponse{
 
+    login:string;
     name:string;
-    repo_url:string;
+    html_url:string;
     description:string
 
     }
-  let promise =new Promise((resolve,reject)=>{
+  let promise = new Promise((resolve,reject)=>{
   this.http.get<ApiResponse>("https://api.github.com/users/" + this.login +
   "/repos?access_token=" + this._apiKey).toPromise().then(response=>{
 
     this.repos.name=response.name
-    this.repos.repo_url=response.repo_url
+    this.repos.html_url=response.html_url
     this.repos.description=response.description
 
     resolve()
     },
     error=>{
+      this.repos.name='addressBook'
+      this.repos.html_url=''
+      this.repos.description=''
 
     reject(error)
       }
@@ -85,8 +94,5 @@ getProfileRepo(){
  return promise
 }
 
-// findProfile() {
-//   this.profileRequest.updateProfile(this.username);
-// }
 
 }
